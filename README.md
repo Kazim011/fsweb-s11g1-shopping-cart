@@ -20,39 +20,39 @@ Bu talimatları dikkatlice okuyun. Bu projeye başlamadan önce tam olarak ne be
 
 Başlamadan önce, lütfen birkaç dakikanızı ayırın ve bu uygulamayı keşfedin. Neler olduğunu ve nasıl çalıştığını anlayın.
 
-- "App.js"ye bakarsanız, şu anda iki state özelliği olduğunu fark edeceksiniz - mevcut tüm ürünleri takip etmek için "products" ve tüm sepetteki ürünleri tutacak bir "cart" statei.
+x "App.js"ye bakarsanız, şu anda iki state özelliği olduğunu fark edeceksiniz - mevcut tüm ürünleri takip etmek için "products" ve tüm sepetteki ürünleri tutacak bir "cart" statei.
 
-- Ayrıca `App.js` dosyamızın içinde 3 bileşene sahip olduğumuzu fark edeceksiniz. Bir navigasyon bileşeni ve iki route tabanlı bileşen. Bu bileşenlerin her biri, ya "cart" stateinden ya da "product" stateini prop olarak alıyor, uygulamamızı ölçeklendirmeye başladığımızda ve daha fazla özellik eklediğimizde, kod tabanımız çok hantal olmaya başlayacak ve uygulamamızın çalışmasını zorlaştıracak.
+x Ayrıca `App.js` dosyamızın içinde 3 bileşene sahip olduğumuzu fark edeceksiniz. Bir navigasyon bileşeni ve iki route tabanlı bileşen. Bu bileşenlerin her biri, ya "cart" stateinden ya da "product" stateini prop olarak alıyor, uygulamamızı ölçeklendirmeye başladığımızda ve daha fazla özellik eklediğimizde, kod tabanımız çok hantal olmaya başlayacak ve uygulamamızın çalışmasını zorlaştıracak.
 
-- Bunun olmasını önlemek için, uygulamamızı "Context API'sı" kullanacak şekilde yeniden düzenleyeceğiz ve uygulamamız genelinde verilere erişimi daha kolay ve verimli hale getireceğiz.
+x Bunun olmasını önlemek için, uygulamamızı "Context API'sı" kullanacak şekilde yeniden düzenleyeceğiz ve uygulamamız genelinde verilere erişimi daha kolay ve verimli hale getireceğiz.
 
 **Adım 1 - Öğe işlevi ekle**
 
-- "App.js" içinde "addItem" adlı bir işlev vardır. Verilen ürünü alışveriş sepetine ekleyebilmek için bu fonksiyonu kullanın.
+x "App.js" içinde "addItem" adlı bir işlev vardır. Verilen ürünü alışveriş sepetine ekleyebilmek için bu fonksiyonu kullanın.
 
 **ADIM 2 - ProductContext Oluşturma**
 
-- `src` içinde, `contexts` adında yeni bir klasör oluşturun, bu klasör, oluşturduğumuz tüm `context nesne`leri tutmak için kullanılacaktır.
+x `src` içinde, `contexts` adında yeni bir klasör oluşturun, bu klasör, oluşturduğumuz tüm `context nesne`leri tutmak için kullanılacaktır.
 
-- Bu klasörün içinde "ProductContext.js" adlı yeni bir dosya oluşturun.
+x Bu klasörün içinde "ProductContext.js" adlı yeni bir dosya oluşturun.
 
-- Bu dosyada, react kitaplığından "createContext" işlevini import edin ve "ProductContext"imizi oluşturun.
+x Bu dosyada, react kitaplığından "createContext" işlevini import edin ve "ProductContext"imizi oluşturun.
 
 **ADIM 3 - ProductContext ile veri sağlama**
 
-- Artık "ProductContext"imizi oluşturduğumuza göre, "App.js" dosyamıza import edebiliriz. Artık uygulamamızın geneline veri sağlamaya başlayabiliriz!
+x Artık "ProductContext"imizi oluşturduğumuza göre, "App.js" dosyamıza import edebiliriz. Artık uygulamamızın geneline veri sağlamaya başlayabiliriz!
 
-- Tüm components/routes ları `App.js` den `ProductContext.Provider` bileşenine tanımlayın.
+x Tüm components/routes ları `App.js` den `ProductContext.Provider` bileşenine tanımlayın.
 
-- Ardından, "Provider" a bir değer propu iletin.
+x Ardından, "Provider" a bir değer propu iletin.
 
-- Değer prop'unda, ürünler stateini ve sepete kitaplar ekleyebilmemizi sağlayacak bir addItem işlevini geçeceğiz.
+x Değer prop'unda, ürünler stateini ve sepete kitaplar ekleyebilmemizi sağlayacak bir addItem işlevini geçeceğiz.
 
 ```js
 <ProductContext.Provider value={{ products, addItem }}>
 ```
 
-- Artık ürünlerimizin stateini ve addItem işlevini sağladığımıza göre, ürünlerimizin routeunu biraz basitleştirebiliriz.
+x Artık ürünlerimizin stateini ve addItem işlevini sağladığımıza göre, ürünlerimizin routeunu biraz basitleştirebiliriz.
 
 **Öncesi**
 
@@ -145,3 +145,5 @@ MVP'ye ulaşılana kadar esnek problemlere başlamayın.
   Her öğenin bir 'id'si olduğunu unutmayın, bu, removeItem işlevinizi oluştururken çok yardımcı olacaktır!
 
 - `localStorage` Kullanarak Sepet Öğelerini Sürdürülebilir hale getirin. (Bunu denerseniz, ürünlerimizin alışveriş sepetini yenileyerek doldurmasını sağlamak biraz zor olacaktır. Verilerin gerçekte nerede depolandığını ve uygulama bir yenilemeden sonra yeniden yüklenirken localStorage'dan oraya nasıl veri alabileceğinizi düşünmeniz gerekecek. İyi şanslar!)
+
+- Ek olaraka Checkout tuşunun işlevselliğini aktive et.
